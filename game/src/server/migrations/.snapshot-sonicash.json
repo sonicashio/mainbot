@@ -1,0 +1,2244 @@
+{
+  "namespaces": [
+    "public"
+  ],
+  "name": "public",
+  "tables": [
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "rank": {
+          "name": "rank",
+          "type": "smallint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "smallint"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "price": {
+          "name": "price",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "max_level_id": {
+          "name": "max_level_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        }
+      },
+      "name": "characters",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "rank"
+          ],
+          "composite": false,
+          "keyName": "characters_rank_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "name"
+          ],
+          "composite": false,
+          "keyName": "characters_name_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "characters_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "characters_max_level_id_foreign": {
+          "constraintName": "characters_max_level_id_foreign",
+          "columnNames": [
+            "max_level_id"
+          ],
+          "localTableName": "public.characters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.character_levels",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "level": {
+          "name": "level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "price": {
+          "name": "price",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "profit_per_hour": {
+          "name": "profit_per_hour",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "profit_per_hour_view_only": {
+          "name": "profit_per_hour_view_only",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "character_levels",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "character_id"
+          ],
+          "composite": false,
+          "keyName": "character_levels_character_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "character_levels_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "character_levels_character_id_foreign": {
+          "constraintName": "character_levels_character_id_foreign",
+          "columnNames": [
+            "character_id"
+          ],
+          "localTableName": "public.character_levels",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.characters",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "level": {
+          "name": "level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "price": {
+          "name": "price",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "boosters_click_power_levels",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "level"
+          ],
+          "composite": false,
+          "keyName": "boosters_click_power_levels_level_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "boosters_click_power_levels_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "day": {
+          "name": "day",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "reward": {
+          "name": "reward",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "spcial_day": {
+          "name": "spcial_day",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "boolean"
+        }
+      },
+      "name": "rewards_daily_logins",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "day"
+          ],
+          "composite": false,
+          "keyName": "rewards_daily_logins_day_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "rewards_daily_logins_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "type": {
+          "name": "type",
+          "type": "earn_task_type",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "nativeEnumName": "earn_task_type",
+          "enumItems": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ],
+          "mappedType": "enum"
+        },
+        "reward": {
+          "name": "reward",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "requirements": {
+          "name": "requirements",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "user_can_complete": {
+          "name": "user_can_complete",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "boolean"
+        }
+      },
+      "name": "earn_tasks",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "earn_tasks_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "level": {
+          "name": "level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "price": {
+          "name": "price",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "boosters_energy_limit_levels",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "level"
+          ],
+          "composite": false,
+          "keyName": "boosters_energy_limit_levels_level_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "boosters_energy_limit_levels_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "telegram_web_app_url": {
+          "name": "telegram_web_app_url",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 255,
+          "default": "'https://t.me/s0nicash_bot/start'",
+          "mappedType": "string"
+        },
+        "telegram_channel_id": {
+          "name": "telegram_channel_id",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 64,
+          "default": "'-1002217295250'",
+          "mappedType": "string"
+        },
+        "user_starting_balance": {
+          "name": "user_starting_balance",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "5000",
+          "mappedType": "integer"
+        },
+        "max_daily_energy_replenishment": {
+          "name": "max_daily_energy_replenishment",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "6",
+          "mappedType": "integer"
+        },
+        "max_offline_profit_hours": {
+          "name": "max_offline_profit_hours",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "3",
+          "mappedType": "integer"
+        },
+        "referral_reward": {
+          "name": "referral_reward",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "5000",
+          "mappedType": "integer"
+        },
+        "daily_reward": {
+          "name": "daily_reward",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "5000",
+          "mappedType": "integer"
+        },
+        "starting_energy_limit": {
+          "name": "starting_energy_limit",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "100",
+          "mappedType": "integer"
+        },
+        "energy_limit_per_character": {
+          "name": "energy_limit_per_character",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "100",
+          "mappedType": "integer"
+        },
+        "energy_limit_per_level": {
+          "name": "energy_limit_per_level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "100",
+          "mappedType": "integer"
+        },
+        "energy_limit_per_booster": {
+          "name": "energy_limit_per_booster",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "100",
+          "mappedType": "integer"
+        }
+      },
+      "name": "settings",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "settings_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "level": {
+          "name": "level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "balance_reward": {
+          "name": "balance_reward",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "required_balance": {
+          "name": "required_balance",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "profit_per_hour": {
+          "name": "profit_per_hour",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "user_levels",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "level"
+          ],
+          "composite": false,
+          "keyName": "user_levels_level_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "name"
+          ],
+          "composite": false,
+          "keyName": "user_levels_name_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "required_balance"
+          ],
+          "composite": false,
+          "keyName": "user_levels_required_balance_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "user_levels_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigserial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "version": {
+          "name": "version",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "1",
+          "mappedType": "integer"
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(64)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 64,
+          "mappedType": "string"
+        },
+        "photo_url": {
+          "name": "photo_url",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "length": 255,
+          "mappedType": "string"
+        },
+        "role": {
+          "name": "role",
+          "type": "user_role",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "nativeEnumName": "user_role",
+          "enumItems": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ],
+          "mappedType": "enum"
+        },
+        "is_banned": {
+          "name": "is_banned",
+          "type": "boolean",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "boolean"
+        },
+        "telegram_id": {
+          "name": "telegram_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "level_id": {
+          "name": "level_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "balance": {
+          "name": "balance",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "balance_per_click": {
+          "name": "balance_per_click",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "total_claimed_balance": {
+          "name": "total_claimed_balance",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "total_balance_get_from_clicks": {
+          "name": "total_balance_get_from_clicks",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "total_clicks": {
+          "name": "total_clicks",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "last_click_sync_time": {
+          "name": "last_click_sync_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "profit_per_hour": {
+          "name": "profit_per_hour",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "last_profit_sync_time": {
+          "name": "last_profit_sync_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "selected_character_id": {
+          "name": "selected_character_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "referrals_count": {
+          "name": "referrals_count",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "refered_by_id": {
+          "name": "refered_by_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "integer"
+        },
+        "total_referral_rewards": {
+          "name": "total_referral_rewards",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "energy": {
+          "name": "energy",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "energy_limit": {
+          "name": "energy_limit",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "last_energy_modified_time": {
+          "name": "last_energy_modified_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "daily_energy_replenishment_used": {
+          "name": "daily_energy_replenishment_used",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "daily_energy_replenishment_claimed_day_time": {
+          "name": "daily_energy_replenishment_claimed_day_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "bigint"
+        },
+        "last_login_reward_day": {
+          "name": "last_login_reward_day",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "last_daily_login_claimed_day_time": {
+          "name": "last_daily_login_claimed_day_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "bigint"
+        },
+        "last_daily_reward_claim_time": {
+          "name": "last_daily_reward_claim_time",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "bigint"
+        }
+      },
+      "name": "users",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "country"
+          ],
+          "composite": false,
+          "keyName": "users_country_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "username"
+          ],
+          "composite": false,
+          "keyName": "users_username_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "photo_url"
+          ],
+          "composite": false,
+          "keyName": "users_photo_url_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "telegram_id"
+          ],
+          "composite": false,
+          "keyName": "users_telegram_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "telegram_id"
+          ],
+          "composite": false,
+          "keyName": "users_telegram_id_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "level_id"
+          ],
+          "composite": false,
+          "keyName": "users_level_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "profit_per_hour"
+          ],
+          "composite": false,
+          "keyName": "users_profit_per_hour_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "selected_character_id"
+          ],
+          "composite": false,
+          "keyName": "users_selected_character_id_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "referrals_count"
+          ],
+          "composite": false,
+          "keyName": "users_referrals_count_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "users_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "users_level_id_foreign": {
+          "constraintName": "users_level_id_foreign",
+          "columnNames": [
+            "level_id"
+          ],
+          "localTableName": "public.users",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.user_levels",
+          "updateRule": "cascade"
+        },
+        "users_selected_character_id_foreign": {
+          "constraintName": "users_selected_character_id_foreign",
+          "columnNames": [
+            "selected_character_id"
+          ],
+          "localTableName": "public.users",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.user_characters",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        },
+        "users_refered_by_id_foreign": {
+          "constraintName": "users_refered_by_id_foreign",
+          "columnNames": [
+            "refered_by_id"
+          ],
+          "localTableName": "public.users",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.referrals",
+          "deleteRule": "set null",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "version": {
+          "name": "version",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "1",
+          "mappedType": "integer"
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "current_level": {
+          "name": "current_level",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "default": "0",
+          "mappedType": "integer"
+        },
+        "unlocked_at": {
+          "name": "unlocked_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "user_characters",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "owner_id"
+          ],
+          "composite": false,
+          "keyName": "user_characters_owner_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "character_id"
+          ],
+          "composite": false,
+          "keyName": "user_characters_character_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "current_level"
+          ],
+          "composite": false,
+          "keyName": "user_characters_current_level_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "user_characters_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "user_characters_owner_id_foreign": {
+          "constraintName": "user_characters_owner_id_foreign",
+          "columnNames": [
+            "owner_id"
+          ],
+          "localTableName": "public.user_characters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.users",
+          "updateRule": "cascade"
+        },
+        "user_characters_character_id_foreign": {
+          "constraintName": "user_characters_character_id_foreign",
+          "columnNames": [
+            "character_id"
+          ],
+          "localTableName": "public.user_characters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.characters",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "energy_limit_id": {
+          "name": "energy_limit_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "click_power_id": {
+          "name": "click_power_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "user_boosters",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "owner_id"
+          ],
+          "composite": false,
+          "keyName": "user_boosters_owner_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "owner_id"
+          ],
+          "composite": false,
+          "keyName": "user_boosters_owner_id_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "energy_limit_id"
+          ],
+          "composite": false,
+          "keyName": "user_boosters_energy_limit_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "click_power_id"
+          ],
+          "composite": false,
+          "keyName": "user_boosters_click_power_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "user_boosters_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "user_boosters_owner_id_foreign": {
+          "constraintName": "user_boosters_owner_id_foreign",
+          "columnNames": [
+            "owner_id"
+          ],
+          "localTableName": "public.user_boosters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.users",
+          "updateRule": "cascade"
+        },
+        "user_boosters_energy_limit_id_foreign": {
+          "constraintName": "user_boosters_energy_limit_id_foreign",
+          "columnNames": [
+            "energy_limit_id"
+          ],
+          "localTableName": "public.user_boosters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.boosters_energy_limit_levels",
+          "updateRule": "cascade"
+        },
+        "user_boosters_click_power_id_foreign": {
+          "constraintName": "user_boosters_click_power_id_foreign",
+          "columnNames": [
+            "click_power_id"
+          ],
+          "localTableName": "public.user_boosters",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.boosters_click_power_levels",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "referrer_id": {
+          "name": "referrer_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "referred_id": {
+          "name": "referred_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        }
+      },
+      "name": "referrals",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "referrer_id"
+          ],
+          "composite": false,
+          "keyName": "referrals_referrer_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "columnNames": [
+            "referred_id"
+          ],
+          "composite": false,
+          "keyName": "referrals_referred_id_index",
+          "constraint": false,
+          "primary": false,
+          "unique": false
+        },
+        {
+          "keyName": "referrals_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "referrals_referrer_id_foreign": {
+          "constraintName": "referrals_referrer_id_foreign",
+          "columnNames": [
+            "referrer_id"
+          ],
+          "localTableName": "public.referrals",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.users",
+          "updateRule": "cascade"
+        },
+        "referrals_referred_id_foreign": {
+          "constraintName": "referrals_referred_id_foreign",
+          "columnNames": [
+            "referred_id"
+          ],
+          "localTableName": "public.referrals",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.users",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "referral_id": {
+          "name": "referral_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "action_type": {
+          "name": "action_type",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "enumItems": [
+            "sign_up"
+          ],
+          "mappedType": "enum"
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "reward_amount": {
+          "name": "reward_amount",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "referral_actions",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "referral_actions_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "referral_actions_referral_id_foreign": {
+          "constraintName": "referral_actions_referral_id_foreign",
+          "columnNames": [
+            "referral_id"
+          ],
+          "localTableName": "public.referral_actions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.referrals",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "bigint",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "bigint"
+        },
+        "task_id": {
+          "name": "task_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "completed_at": {
+          "name": "completed_at",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "reward_amount": {
+          "name": "reward_amount",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "task_completions",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "task_completions_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "task_completions_user_id_foreign": {
+          "constraintName": "task_completions_user_id_foreign",
+          "columnNames": [
+            "user_id"
+          ],
+          "localTableName": "public.task_completions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.users",
+          "updateRule": "cascade"
+        },
+        "task_completions_task_id_foreign": {
+          "constraintName": "task_completions_task_id_foreign",
+          "columnNames": [
+            "task_id"
+          ],
+          "localTableName": "public.task_completions",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.earn_tasks",
+          "updateRule": "cascade"
+        }
+      },
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": false,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamptz",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "total_users": {
+          "name": "total_users",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "total_clicks": {
+          "name": "total_clicks",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "total_clicks_coins": {
+          "name": "total_clicks_coins",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "total_coins": {
+          "name": "total_coins",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "avg_clicks_per_user": {
+          "name": "avg_clicks_per_user",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "avg_coins_per_user": {
+          "name": "avg_coins_per_user",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "most_active_user": {
+          "name": "most_active_user",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 255,
+          "mappedType": "string"
+        },
+        "new_users24h": {
+          "name": "new_users24h",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "total_referral_rewards": {
+          "name": "total_referral_rewards",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "user_growth7day": {
+          "name": "user_growth7day",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "top_users": {
+          "name": "top_users",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        },
+        "users_by_country": {
+          "name": "users_by_country",
+          "type": "jsonb",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "json"
+        }
+      },
+      "name": "statics_users",
+      "schema": "public",
+      "indexes": [
+        {
+          "columnNames": [
+            "date"
+          ],
+          "composite": false,
+          "keyName": "statics_users_date_unique",
+          "constraint": true,
+          "primary": false,
+          "unique": true
+        },
+        {
+          "keyName": "statics_users_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "constraint": true,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {},
+      "nativeEnums": {
+        "earn_task_type": {
+          "name": "earn_task_type",
+          "schema": "public",
+          "items": [
+            "telegram_join",
+            "x_follow",
+            "youtube_subscribe",
+            "invite_friends"
+          ]
+        },
+        "user_role": {
+          "name": "user_role",
+          "schema": "public",
+          "items": [
+            "admin",
+            "moderator",
+            "support",
+            "user"
+          ]
+        }
+      }
+    }
+  ],
+  "nativeEnums": {
+    "earn_task_type": {
+      "name": "earn_task_type",
+      "schema": "public",
+      "items": [
+        "telegram_join",
+        "x_follow",
+        "youtube_subscribe",
+        "invite_friends"
+      ]
+    },
+    "user_role": {
+      "name": "user_role",
+      "schema": "public",
+      "items": [
+        "admin",
+        "moderator",
+        "support",
+        "user"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+services:
+  postgresdb:
+    image: postgres
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_USER=$POSTGRESDB_USER
+      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+      - POSTGRES_DB=$POSTGRESDB_DATABASE
+    ports:
+      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
+    volumes:
+      - db:/var/lib/postgres
+
+  app:
+    depends_on:
+      - postgresdb
+    build: ./game
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - NUXT_DB_HOST=postgresdb
+      - NUXT_DB_PORT=$POSTGRESDB_DOCKER_PORT
+      - NUXT_DB_USER=$POSTGRESDB_USER
+      - NUXT_DB_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+      - NUXT_DB_NAME=$POSTGRESDB_DATABASE
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
