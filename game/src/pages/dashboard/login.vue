@@ -17,7 +17,7 @@ if (import.meta.dev) {
     await handleUserAuth(user);
 }
 
-async function handleUserAuth(user: LoginWidgetUser): Promise<void> {
+async function handleUserAuth(user: !LoginWidgetUser): Promise<void> {
     const params = new URLSearchParams();
     for (const key in user) {
         params.set(key, (user as { [key: string]: string })[key]);
