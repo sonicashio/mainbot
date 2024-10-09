@@ -55,21 +55,21 @@ if (isSupportedPlatform.value && initData) {
     </h1>
 
     <a
-      href="https://t.me/s0nicash_bot"
+      href="https://t.me/sonicashgame_bot"
       rel="noopener noreferrer"
     >
       <img
         class="object-contain w-56 h-56"
         src="~/assets/img/qr.png"
-        alt="@s0nicash_bot"
+        alt="@sonicashgame_bot"
       />
     </a>
     <a
-      href="https://t.me/s0nicash_bot"
+      href="https://t.me/sonicashgame_bot"
       rel="noopener noreferrer"
       class="text-2xl font-bold uppercase text-shadow mt-2"
     >
-      @s0nicash_bot
+      @sonicashgame_bot
     </a>
   </section>
 
