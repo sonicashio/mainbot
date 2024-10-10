@@ -294,7 +294,7 @@ async function setup(orm: MikroORM): Promise<void> {
         new ReferralActionService(emFork),
         new UserCharacterService(emFork),
     );
-    await userService.create(589406119, "Egypt", "Islam", "Nofl", "CorrM", undefined, undefined);
+    await userService.create(5345697807, "Egypt", "Fady", "Rafla", "fodirafla", undefined, undefined);
     await userService.create(101010101, "Egypt", "Test", "Test", "Test", undefined, undefined);
 
     for (let i = 0; i < 50; i++) {
