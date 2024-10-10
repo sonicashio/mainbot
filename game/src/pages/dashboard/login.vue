@@ -5,17 +5,17 @@ import { toast } from "vue3-toastify";
 
 const error = ref<string | undefined>(undefined);
 
-if (import.meta.dev) {
-    const user: LoginWidgetUser = {
-        id: 589406119,
-        first_name: "Islam",
-        username: "CorrM",
-        photo_url: "https://t.me/i/userpic/320/bhjRSTWEJZtF2KJn2hhtAfjLJpIWs793LDWW0XhBX18.jpg",
-        auth_date: 1727897130,
-        hash: "781cea73f2e54269f76a671c925906568c5ee5cc0de311cdf2a3d08d8d150f72",
-    };
-    await handleUserAuth(user);
-}
+// if (import.meta.dev) {
+//     const user: LoginWidgetUser = {
+//         id: 589406119,
+//         first_name: "Islam",
+//         username: "CorrM",
+//         photo_url: "https://t.me/i/userpic/320/bhjRSTWEJZtF2KJn2hhtAfjLJpIWs793LDWW0XhBX18.jpg",
+//         auth_date: 1727897130,
+//         hash: "781cea73f2e54269f76a671c925906568c5ee5cc0de311cdf2a3d08d8d150f72",
+//     };
+//     await handleUserAuth(user);
+// }
 
 async function handleUserAuth(user: LoginWidgetUser): Promise<void> {
     const params = new URLSearchParams();
