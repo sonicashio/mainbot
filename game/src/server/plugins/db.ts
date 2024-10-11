@@ -11,7 +11,7 @@ import { EnergyLimitLevelBooster, ClickPowerLevelBooster } from "~/server/entiti
 import { DailyLoginReward } from "~/server/entities/rewards";
 import { EarnTask } from "~/server/entities/tasks";
 import { CharacterLevel, Character } from "~/server/entities/character";
-import { User, UserLevel, UserRole } from "~/server/entities/user";
+import { User, UserLevel } from "~/server/entities/user";
 import { EarnTaskType } from "~/types";
 import { SettingsService } from "~/server/services";
 import { Settings } from "~/server/entities/settings";
@@ -294,12 +294,8 @@ async function setup(orm: MikroORM): Promise<void> {
         new ReferralActionService(emFork),
         new UserCharacterService(emFork),
     );
-    // await userService.create(589406119, "Egypt", "Islam", "Nofl", "CorrM", undefined, undefined);
-    // await userService.create(101010101, "Egypt", "Test", "Test", "Test", undefined, undefined);
-
-    const adminUser = await userService.create(5345697807, "Egypt", "Fady", undefined, undefined, undefined, undefined);
-    userService.setRole(adminUser, UserRole.ADMIN);
-    await userService.update(adminUser);
+    await userService.create(589406119, "Egypt", "Islam", "Nofl", "CorrM", undefined, undefined);
+    await userService.create(101010101, "Egypt", "Test", "Test", "Test", undefined, undefined);
 
     for (let i = 0; i < 50; i++) {
         await userService.create(2900 + i, "Egypt", `user${i}`, `user${i}`, `user${i}`, undefined, "589406119");
